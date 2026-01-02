@@ -40,3 +40,85 @@ Import trace:
 
  ○ Compiling /_error ...
  GET / 500 in 16.1s (compile: 15.7s, render: 430ms)
+Error: Cannot apply unknown utility class `bg-background`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (/app/node_modules/tailwindcss/dist/lib.js:21:1314)][0m
+    [2m[at Te (/app/node_modules/tailwindcss/dist/lib.js:16:36364)][0m
+    [2m[at /app/node_modules/tailwindcss/dist/lib.js:21:355][0m
+    [2m[at Tr (/app/node_modules/tailwindcss/dist/lib.js:3:1718)][0m
+    [2m[at _ (/app/node_modules/tailwindcss/dist/lib.js:3:1377)][0m
+    [2m[at Se (/app/node_modules/tailwindcss/dist/lib.js:21:172)][0m
+    [2m[at ln (/app/node_modules/tailwindcss/dist/lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:105:5)][0m
+    [2m[at async sn (/app/node_modules/tailwindcss/dist/lib.js:38:631)][0m
+    [2m[at async Qr (/app/node_modules/@tailwindcss/node/dError: Cannot apply unknown ⨯ ./tailwind.config.ts:61:13
+Module not found: Can't resolve 'tailwindcss-animate'
+[0m [90m 59 |[39m     }[33m,[39m
+ [90m 60 |[39m   }[33m,[39m
+[31m[1m>[22m[39m[90m 61 |[39m   plugins[33m:[39m [require([32m"tailwindcss-animate"[39m)][33m,[39m
+ [90m    |[39m             [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 62 |[39m }
+ [90m 63 |[39m
+  ⨯ ./tailwind.config.ts:61:13
+Module not found: Can't resolve 'tailwindcss-animate'
+[0m [90m 59 |[39m     }[33Error: Cannot apply unknown utility class `bg-background`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (/app/node_modules/tailwindcss/dist/lib.js:21:1314)][0m
+    [2m[at Te (/app/node_modules/tailwindcss/dist/lib.js:16:36364)][0m
+    [2m[at /app/node_modules/tailwindcss/dist/lib.js:21:355][0m
+    [2m[at Tr (/app/node_modules/tailwindcss/dist/lib.js:3:1718)][0m
+    [2m[at _ (/app/node_modules/tailwindcss/dist/lib.js:3:1377)][0m
+    [2m[at Se (/app/node_modules/tailwindcss/dist/lib.js:21:172)][0m
+    [2m[at ln (/app/node_modules/tailwindcss/dist/lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:105:5)][0m
+    [2m[at async sn (/app/node_modules/tailwindcss/dist/lib.js:38:631)][0m
+    [2m[at async Qr (/app/node_modules/@tailwindcss/node/dError: Cannot apply unknownError: Cannot apply unknown utility class `bg-background`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (/app/node_modules/tailwindcss/dist/lib.js:21:1314)][0m
+    [2m[at Te (/app/node_modules/tailwindcss/dist/lib.js:16:36364)][0m
+    [2m[at /app/node_modules/tailwindcss/dist/lib.js:21:355][0m
+    [2m[at Tr (/app/node_modules/tailwindcss/dist/lib.js:3:1718)][0m
+    [2m[at _ (/app/node_modules/tailwindcss/dist/lib.js:3:1377)][0m
+    [2m[at Se (/app/node_modules/tailwindcss/dist/lib.js:21:172)][0m
+    [2m[at ln (/app/node_modules/tailwindcss/dist/lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:105:5)][0m
+    [2m[at async sn (/app/node_modules/tailwindcss/dist/lib.js:38:631)][0m
+    [2m[at async Qr (/app/node_modules/@tailwindcss/node/dError: Cannot apply unknown ✓ Compiled in 846ms
+ground`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (/app/node_modules/tailwindcss/dist/lib.js:21:1314)][0m
+    [2m[at Te (/app/node_modules/tailwindcss/dist/lib.js:16:36364)][0m
+    [2m[at /app/node_modules/tailwindcss/dist/lib.js:21:355][0m
+    [2m[at Tr (/app/node_modules/tailwindcss/dist/lib.js:3:1718)][0m
+    [2m[at _ (/app/node_modules/tailwindcss/dist/lib.js:3:1377)][0m
+    [2m[at Se (/app/node_modules/tailwindcss/dist/lib.js:21:172)][0m
+    [2m[at ln (/app/node_modules/tailwindcss/dist/lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:105:5)][0m
+    [2m[at async sn (/app/node_modules/tailwindcss/dist/lib.js:38:631)][0m
+    [2m[at async Qr (/app/node_modules/@tailwindcss/node/dist/index.js:10:3385)][0m
+ ✓ Compiled in 862ms
+:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:105:5)][0m
+    [2m[at async sn (/app/node_modules/tailwindcss/dist/lib.js:38:631)][0m
+    [2m[at async Qr (/app/node_modules/@tailwindcss/node/dist/index.js:10:3385)][0m
+Error: Cannot apply unknown utility class `bg-background`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (/app/node_modules/tailwindcss/dist/lib.js:21:1314)][0m
+    [2m[at Te (/app/node_modules/tailwindcss/dist/lib.js:16:36364)][0m
+    [2m[at /app/node_modules/tailwindcss/dist/lib.js:21:355][0m
+    [2m[at Tr (/app/node_modules/tailwindcss/dist/lib.js:3:1718)][0m
+    [2m[at _ (/app/node_modules/tailwindcss/dist/lib.js:3:1377)][0m
+    [2m[at Se (/app/node_modules/tailwindcss/dist/lib.js:21:172)][0m
+    [2m[at ln (/app/node_modules/tailwindcss/dist/lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:105:5)][0m
+    [2m[at async sn (/app/node_modules/tailwindcss/dist/lib.js:38:631)][0m
+    [2m[at async Qr (/app/node_modules/@tailwindcss/node/dist/index.js:10:3385)][0m
+ ✓ Compiled in 862ms
+@tailwindcss/node/dist/index.js:10:3385)][0m
+Error: Cannot apply unknown utility class `bg-background`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (/app/node_modules/tailwindcss/dist/lib.js:21:1314)][0m
+    [2m[at Te (/app/node_modules/tailwindcss/dist/lib.js:16:36364)][0m
+    [2m[at /app/node_modules/tailwindcss/dist/lib.js:21:355][0m
+    [2m[at Tr (/app/node_modules/tailwindcss/dist/lib.js:3:1718)][0m
+    [2m[at _ (/app/node_modules/tailwindcss/dist/lib.js:3:1377)][0m
+    [2m[at Se (/app/node_modules/tailwindcss/dist/lib.js:21:172)][0m
+    [2m[at ln (/app/node_modules/tailwindcss/dist/lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:105:5)][0m
+    [2m[at async sn (/app/node_modules/tailwindcss/dist/lib.js:38:631)][0m
+    [2m[at async Qr (/app/node_modules/@tailwindcss/node/dist/index.js:10:3385)][0m
+ ✓ Compiled in 883ms
