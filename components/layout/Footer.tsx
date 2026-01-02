@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="space-y-3 sm:space-y-4">
             <h4 className="text-white font-semibold text-sm sm:text-base">Quick Links</h4>
             <div className="flex flex-col space-y-2">
-              {['home', 'about', 'experience', 'skills', 'projects', 'contact'].map((link) => (
+              {['home', 'about', 'experience', 'skills', 'projects', 'blog', 'contact'].map((link) => (
                 <a
                   key={link}
                   href={`#${link}`}
@@ -101,4 +101,3 @@ export default function Footer() {
     </footer>
   );
 }
-

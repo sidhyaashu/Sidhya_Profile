@@ -9,6 +9,7 @@ const navItems = [
   { name: 'Experience', href: '#experience' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Blog', href: '#blog' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -16,7 +17,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [isMobile, setIsMobile] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const [menuHeight, setMenuHeight] = useState(0);
 
@@ -24,7 +24,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
       const sections = navItems.map((item) => item.href.substring(1));
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
@@ -41,68 +40,69 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Calculate menu height for smooth animation
   useEffect(() => {
     if (menuRef.current) {
       if (isMobileMenuOpen) {
-        // Set height to actual content height
-        const height = menuRef.current.scrollHeight;
-        setMenuHeight(height);
+        setMenuHeight(menuRef.current.scrollHeight + 24);
       } else {
         setMenuHeight(0);
       }
     }
   }, [isMobileMenuOpen]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navbarHeight,
+        behavior: 'smooth'
+      });
     }
   };
 
-  // Calculate border-radius for smooth transition
-  const borderRadius = isMobileMenuOpen ? '1rem' : '9999px';
-
   return (
     <nav
-      className={`fixed top-2 sm:top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out ${
-        isScrolled || isMobileMenuOpen
-          ? 'w-[95%] sm:w-[90%] max-w-4xl'
-          : 'w-[90%] sm:w-[85%] max-w-3xl'
-      }`}
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isMobileMenuOpen
+          ? 'w-[95%] max-w-[400px]'
+          : isScrolled
+            ? 'w-[90%] sm:w-auto max-w-4xl'
+            : 'w-[95%] sm:w-auto max-w-5xl'
+        }`}
     >
       <div
-        className="navbar-container backdrop-blur-md bg-white/10 border border-white/20 px-4 sm:px-6 py-2 sm:py-3 shadow-lg"
+        className={`relative backdrop-blur-xl border transition-all duration-500 overflow-hidden ${isMobileMenuOpen
+            ? 'bg-zinc-900/95 border-zinc-700 shadow-2xl rounded-[28px]'
+            : 'bg-black/50 border-white/10 shadow-lg hover:border-white/20 rounded-full'
+          }`}
         style={{
-          borderRadius: isMobileMenuOpen ? (window.innerWidth >= 768 ? '9999px' : '1rem') : '9999px',
-          backgroundColor: isScrolled || isMobileMenuOpen ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 0.1)',
-          boxShadow: isScrolled || isMobileMenuOpen 
-            ? '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' 
-            : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+          padding: isMobileMenuOpen ? '20px' : '8px 24px',
         }}
       >
         <div className="flex items-center justify-between">
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 mx-auto">
+          {/* Logo placeholder for mobile only */}
+          <div className={`md:hidden font-bold transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 delay-100' : 'opacity-0 w-0 overflow-hidden'}`}>
+            <span className="text-white">Menu</span>
+          </div>
+
+          <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const sectionId = item.href.substring(1);
               const isActive = activeSection === sectionId;
@@ -114,61 +114,38 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(item.href);
                   }}
-                  className={`text-sm lg:text-base font-medium transition-colors relative group ${
-                    isActive
-                      ? 'text-white'
-                      : 'text-white/90 hover:text-white'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                      ? 'text-white bg-white/10 shadow-inner'
+                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                    }`}
                 >
                   {item.name}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-300 ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}
-                  />
                 </a>
               );
             })}
           </div>
 
           <button
-            className="md:hidden cursor-pointer text-white hover:text-white/80 transition-all duration-300 p-1 relative"
+            className={`md:hidden relative w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white transition-colors rounded-full hover:bg-white/10 ${!isMobileMenuOpen && 'ml-auto'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            <div className="relative w-6 h-6">
-              <Menu
-                size={24}
-                className={`absolute inset-0 transition-all duration-300 ${
-                  isMobileMenuOpen
-                    ? 'opacity-0 rotate-90 scale-0'
-                    : 'opacity-100 rotate-0 scale-100'
-                }`}
-              />
-              <X
-                size={24}
-                className={`absolute inset-0 transition-all duration-300 ${
-                  isMobileMenuOpen
-                    ? 'opacity-100 rotate-0 scale-100'
-                    : 'opacity-0 -rotate-90 scale-0'
-                }`}
-              />
+            <div className="w-6 h-6 relative">
+              <Menu className={`absolute inset-0 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0 scale-50 rotate-90' : 'opacity-100 scale-100 rotate-0'}`} />
+              <X className={`absolute inset-0 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-50 -rotate-90'}`} />
             </div>
           </button>
         </div>
 
         <div
           ref={menuRef}
-          className="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
+          className="md:hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
           style={{
-            maxHeight: `${menuHeight}px`,
+            maxHeight: isMobileMenuOpen ? `${menuHeight}px` : '0px',
             opacity: isMobileMenuOpen ? 1 : 0,
-            marginTop: isMobileMenuOpen ? '1rem' : '0',
-            paddingTop: isMobileMenuOpen ? '1rem' : '0',
-            borderTop: isMobileMenuOpen ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid transparent',
           }}
         >
-          <div className="space-y-2 pb-2">
+          <div className="flex flex-col gap-2 pt-6 pb-2">
             {navItems.map((item, index) => {
               const sectionId = item.href.substring(1);
               const isActive = activeSection === sectionId;
@@ -180,15 +157,12 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(item.href);
                   }}
-                  className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    isActive
-                      ? 'text-white bg-white/10 shadow-sm'
-                      : 'text-white/90 hover:text-white hover:bg-white/5'
-                  } ${
-                    isMobileMenuOpen ? 'menu-item-enter' : ''
-                  }`}
+                  className={`block px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 border border-transparent ${isActive
+                      ? 'text-white bg-white/10 translate-x-1 border-white/5'
+                      : 'text-zinc-400 hover:text-white hover:bg-white/5 hover:translate-x-1'
+                    }`}
                   style={{
-                    animationDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms',
+                    transitionDelay: `${index * 50}ms`
                   }}
                 >
                   {item.name}
@@ -201,4 +175,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

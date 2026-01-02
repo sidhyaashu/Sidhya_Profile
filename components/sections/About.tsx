@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Pencil, Monitor, Palette, Code } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Pencil, Monitor, Palette, Code, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const services = [
   {
@@ -13,7 +13,7 @@ const services = [
   },
   {
     icon: Monitor,
-    title: 'Web & Mobile Development',
+    title: 'Web & Mobile Dev',
     description:
       'Creating exceptional web and mobile experiences with modern technologies.',
   },
@@ -25,7 +25,7 @@ const services = [
   },
   {
     icon: Code,
-    title: 'Full-Stack Development',
+    title: 'Full-Stack Engineering',
     description:
       'Bringing your vision to life with latest technology and design trends.',
   },
@@ -60,65 +60,83 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 relative overflow-hidden"
+      className="min-h-screen bg-black text-white flex flex-col justify-center px-6 sm:px-12 lg:px-24 py-24 relative overflow-hidden"
     >
-      {/* Professional gradient background */}
-      <div className="absolute inset-0 bg-[#0a0a0a]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
-      {/* Blue/Teal gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(59,130,246,0.2),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(20,184,166,0.15),transparent_60%)]" />
-      
-      <div className="relative z-10 max-w-6xl mx-auto w-full space-y-12 sm:space-y-16">
-        <div className={`text-center space-y-3 sm:space-y-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white/90 leading-tight">
-            Collaborate with{' '}
-            <span className="text-white">AI and engineering</span> to
+      <div className="max-w-7xl mx-auto w-full">
+
+        {/* 1. Header Section */}
+        <div className={`mb-20 sm:mb-28 max-w-4xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-none mb-8">
+            Meet the engineer <br />
+            who builds the future.
           </h2>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white/50 leading-tight">
-            create impactful results.
-          </h2>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 md:items-start">
+            <p className="text-zinc-500 text-lg sm:text-xl max-w-xl leading-relaxed">
+              I'm <span className="text-zinc-200 font-semibold">Asutosh Sidhya</span>.
+              I build intelligent, scalable systems that merge innovation with real-world impact.
+              From AI agents to cloud automation, I engineering solutions that scale.
+            </p>
+            <Link href="#contact" className="inline-flex items-center text-purple-400 font-medium hover:text-purple-300 transition-colors group">
+              Let's work together <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className={`bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 transition-all duration-300 hover:bg-zinc-900/70 hover:scale-105 hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <CardContent className="p-6 sm:p-8 space-y-4">
-                <div className="w-12 h-12 rounded-lg bg-zinc-800 flex items-center justify-center group-hover:bg-zinc-700 transition-colors">
-                  <service.icon className="h-6 w-6 text-white/70 group-hover:text-white transition-colors" />
+        {/* 2. Metrics / Stats Section */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24 border-t border-zinc-800 pt-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="flex flex-col gap-2">
+            <span className="text-5xl font-bold text-white tracking-tight">20+</span>
+            <span className="text-zinc-500 text-sm font-medium">Projects Delivered</span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <span className="text-5xl font-bold text-white tracking-tight">3+</span>
+            <span className="text-zinc-500 text-sm font-medium">Years Experience</span>
+          </div>
+          <div className="col-span-1 md:col-span-2 flex items-center">
+            <p className="text-zinc-600 text-sm leading-relaxed max-w-md">
+              Committed to writing clean, efficient code and deploying robust applications that solve complex problems for businesses and users alike.
+            </p>
+          </div>
+        </div>
+
+        {/* 3. Feature/Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={index}
+                className={`group relative bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 sm:p-10 hover:bg-zinc-900/50 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                style={{ transitionDelay: `${index * 150 + 300}ms` }}
+              >
+                <div className="absolute top-8 right-8 text-zinc-700 group-hover:text-purple-500/50 transition-colors">
+                  <Icon className="w-24 h-24 opacity-20" />
                 </div>
-                <h3 className="text-base sm:text-lg font-semibold text-white">
-                  {service.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-white/60 leading-relaxed">
-                  {service.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+
+                <div className="relative z-10 flex flex-col h-full justify-between gap-12">
+                  <div className="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-zinc-300 group-hover:text-white group-hover:scale-110 transition-all duration-500">
+                    <Icon className="w-6 h-6" />
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-zinc-400 leading-relaxed text-sm sm:text-base">
+                      {service.description}
+                    </p>
+                    <div className="mt-6 flex items-center text-sm font-medium text-zinc-500 group-hover:text-white transition-colors">
+                      Read story <ArrowRight className="ml-2 w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        <div className={`max-w-3xl mx-auto text-center space-y-4 sm:space-y-6 pt-4 sm:pt-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white/90">
-            About Me
-          </h3>
-          <p className="text-white/70 leading-relaxed text-sm sm:text-base md:text-lg px-4">
-            I'm <span className="text-white font-semibold">Asutosh Sidhya</span>,
-            an AI and Software Engineer passionate about building intelligent,
-            scalable, and automation-driven systems that merge innovation with
-            real-world impact. My expertise spans Generative AI, Natural Language
-            Processing, Deep Learning, IoT, DevOps, and Full-Stack Development.
-          </p>
-          <p className="text-white/70 leading-relaxed text-sm sm:text-base md:text-lg px-4">
-            I love solving complex challenges that combine AI, software engineering,
-            and cloud automation to create systems that learn, adapt, and scale.
-          </p>
-        </div>
       </div>
     </section>
   );
 }
+
