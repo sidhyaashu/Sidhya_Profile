@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar } from 'lucide-react';
@@ -53,82 +52,52 @@ const experiences = [
 ];
 
 export default function Experience() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="experience"
-      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 relative overflow-hidden"
+      className="relative w-full py-20 md:py-32 overflow-hidden"
     >
-      {/* Professional gradient background */}
       <div className="absolute inset-0 bg-[#0a0a0a]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
-      {/* Purple/Blue gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(147,51,234,0.2),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(99,102,241,0.15),transparent_60%)]" />
-      
-      <div className="relative z-10 max-w-5xl mx-auto w-full space-y-8 sm:space-y-12">
-        <div className={`text-center space-y-3 sm:space-y-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(147,51,234,0.15),transparent_50%)]" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
             Experience Timeline
           </h2>
-          <p className="text-white/60 text-sm sm:text-base md:text-lg">
+          <p className="text-white/60 text-base md:text-lg">
             My professional journey through AI, software development, and DevOps
           </p>
         </div>
 
-        <div className="space-y-4 sm:space-y-6">
+        <div className="space-y-8">
           {experiences.map((exp, index) => (
             <Card
               key={index}
-              className={`bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 transition-all duration-300 hover:bg-zinc-900/70 hover:scale-[1.02] hover:shadow-xl ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              className="bg-neutral-900 border-neutral-800"
             >
               <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
-                  <div className="space-y-1 sm:space-y-2">
-                    <CardTitle className="text-lg sm:text-xl text-white">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <div className="space-y-1">
+                    <CardTitle className="text-xl text-white">
                       {exp.title}
                     </CardTitle>
-                    <p className="text-white/80 font-medium text-sm sm:text-base">{exp.company}</p>
+                    <p className="text-white/80 font-medium">{exp.company}</p>
                   </div>
-                  <div className="flex items-center gap-2 text-white/60">
-                    <Calendar className="h-4 w-4 flex-shrink-0" />
-                    <span className="text-xs sm:text-sm whitespace-nowrap">{exp.period}</span>
+                  <div className="flex items-center gap-2 text-white/60 text-sm">
+                    <Calendar className="h-4 w-4" />
+                    <span>{exp.period}</span>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-3 sm:space-y-4">
-                <ul className="space-y-2 sm:space-y-3">
+              <CardContent className="space-y-4">
+                <ul className="space-y-2">
                   {exp.description.map((item, idx) => (
                     <li
                       key={idx}
-                      className="text-white/70 text-xs sm:text-sm leading-relaxed flex items-start"
+                      className="text-white/70 text-sm leading-relaxed flex items-start"
                     >
-                      <span className="mr-2 sm:mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-white/50 flex-shrink-0" />
+                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-white/50" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -138,7 +107,7 @@ export default function Experience() {
                     <Badge
                       key={idx}
                       variant="secondary"
-                      className="bg-zinc-800 text-white/80 hover:bg-zinc-700 text-xs"
+                      className="bg-neutral-800 text-white/80 text-xs"
                     >
                       {tag}
                     </Badge>
@@ -149,16 +118,16 @@ export default function Experience() {
           ))}
         </div>
 
-        <div className={`bg-zinc-900/50 border border-zinc-800 rounded-lg p-6 sm:p-8 text-center space-y-3 sm:space-y-4 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-xl sm:text-2xl font-bold text-white">Education</h3>
+        <div className="bg-neutral-900 border border-neutral-800 rounded-lg p-8 mt-16 text-center">
+          <h3 className="text-2xl font-bold text-white mb-4">Education</h3>
           <div className="space-y-2">
-            <p className="text-white/90 font-semibold text-sm sm:text-base">
+            <p className="text-white/90 font-semibold text-lg">
               Bachelor of Technology (B.Tech) – Computer Science & Engineering
             </p>
-            <p className="text-white/70 text-sm sm:text-base">
+            <p className="text-white/70">
               Specialization: Artificial Intelligence & Machine Learning
             </p>
-            <p className="text-white/60 text-xs sm:text-sm">
+            <p className="text-white/60 text-sm">
               Brainware University | Batch 2023 – 2027
             </p>
           </div>
