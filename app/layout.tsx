@@ -1,7 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { cn } from '@/lib/utils';
+import ParticlesBackground from '@/components/layout/ParticlesBackground';
+import ScrollProgress from '@/components/layout/ScrollProgress';
+import GridOverlay from '@/components/layout/GridOverlay';
+import TriangleDecoration from '@/components/layout/TriangleDecoration';
+import CursorRing from '@/components/layout/CursorRing';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +21,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "bg-background text-foreground")}>
+      <body className={inter.className}>
+        <ParticlesBackground />
+        <GridOverlay />
+        <TriangleDecoration />
+        <CursorRing />
+        <ScrollProgress />
         {children}
       </body>
     </html>
