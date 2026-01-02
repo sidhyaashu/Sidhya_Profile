@@ -13,18 +13,19 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-neutral-800 bg-neutral-950/50 py-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-white">Asutosh Sidhya</h3>
-            <p className="text-neutral-400 text-sm">
+    <footer className="border-t border-zinc-800 bg-zinc-950/50 backdrop-blur-sm">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-white">Asutosh Sidhya</h3>
+            <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
               AI & Software Engineer building intelligent systems that merge
               innovation with real-world impact.
             </p>
           </div>
-          <div className="space-y-4">
-            <h4 className="font-semibold text-white">Quick Links</h4>
+
+          <div className="space-y-3 sm:space-y-4">
+            <h4 className="text-white font-semibold text-sm sm:text-base">Quick Links</h4>
             <div className="flex flex-col space-y-2">
               {['home', 'about', 'experience', 'skills', 'projects', 'contact'].map((link) => (
                 <a
@@ -34,57 +35,70 @@ export default function Footer() {
                     e.preventDefault();
                     handleLinkClick(`#${link}`);
                   }}
-                  className="text-neutral-400 hover:text-white text-sm transition-colors capitalize"
+                  className="text-white/60 hover:text-white text-xs sm:text-sm transition-colors capitalize"
                 >
                   {link}
                 </a>
               ))}
             </div>
           </div>
-          <div className="space-y-4">
-            <h4 className="font-semibold text-white">Connect</h4>
-            <div className="flex items-center gap-4">
+
+          <div className="space-y-3 sm:space-y-4">
+            <h4 className="text-white font-semibold text-sm sm:text-base">Connect</h4>
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               <a
                 href="https://www.linkedin.com/in/asutoshsidhya8170/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-white transition-colors"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center transition-all duration-300 hover:scale-110"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-5 w-5 sm:h-6 sm:w-6 text-white/70" />
               </a>
               <a
                 href="https://github.com/sidhyaashu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-white transition-colors"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center transition-all duration-300 hover:scale-110"
                 aria-label="GitHub"
               >
-                <Github className="h-5 w-5" />
+                <Github className="h-5 w-5 sm:h-6 sm:w-6 text-white/70" />
               </a>
               <a
                 href="https://x.com/Asutosh_sidhyaa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-white transition-colors"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center transition-all duration-300 hover:scale-110"
                 aria-label="Twitter"
               >
-                <Twitter className="h-5 w-5" />
+                <Twitter className="h-5 w-5 sm:h-6 sm:w-6 text-white/70" />
               </a>
               <a
                 href="mailto:sidhyaasutosh@gmail.com"
-                className="text-neutral-400 hover:text-white transition-colors"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center transition-all duration-300 hover:scale-110"
                 aria-label="Email"
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-white/70" />
               </a>
             </div>
+            <p className="text-white/60 text-xs sm:text-sm">
+              Open to collaborations and opportunities
+            </p>
           </div>
         </div>
-        <div className="border-t border-neutral-800 pt-8 text-center text-neutral-500 text-sm">
-          <p>© {currentYear} Asutosh Sidhya. All rights reserved.</p>
+
+        <div className="pt-6 sm:pt-8 border-t border-zinc-800">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-center sm:text-left">
+            <p className="text-white/50 text-xs sm:text-sm">
+              © {currentYear} Asutosh Sidhya. All rights reserved.
+            </p>
+            <p className="text-white/50 text-xs sm:text-sm">
+              Built with Love and Passion
+            </p>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
+
